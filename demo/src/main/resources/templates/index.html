@@ -5,6 +5,8 @@
 </head>
 <body>
     <h1>Welcome to Task Manager</h1>
-    <p>This is the home page served by Thymeleaf.</p>
+    <ul>
+        <li th:each="task : ${tasks}" th:text="${task.title} + ': ' + ${task.description}"></li>
+    </ul>
 </body>
 </html>
