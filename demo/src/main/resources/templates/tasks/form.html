@@ -1,0 +1,23 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+  <h1 th:text="${task.id}==null?'New Task':'Edit Task'"></h1>
+  <form th:action="@{/tasks}" th:object="${task}" method="post">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" th:field="*{title}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea th:field="*{description}" class="form-control"></textarea>
+    </div>
+    <div class="form-check mb-3">
+      <input type="checkbox" th:field="*{done}" class="form-check-input" id="done">
+      <label for="done" class="form-check-label">Done?</label>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/tasks" class="btn btn-secondary">Cancel</a>
+  </form>
+</body></html>

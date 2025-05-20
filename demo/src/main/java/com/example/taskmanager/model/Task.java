@@ -1,4 +1,3 @@
-// src/main/java/com/example/taskmanager/model/Task.java
 package com.example.taskmanager.model;
 
 import jakarta.persistence.Entity;
