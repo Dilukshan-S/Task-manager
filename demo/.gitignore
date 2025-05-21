@@ -35,3 +35,9 @@ out/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild
+
+*.db
+*.mv.db
+*.trace.db
+*.h2.db
+*.mv.db.lock.db
