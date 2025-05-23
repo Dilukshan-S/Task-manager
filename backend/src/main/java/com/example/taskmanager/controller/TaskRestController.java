@@ -24,7 +24,6 @@ public class TaskRestController {
         return ResponseEntity
                 .ok()
                 .header("Content-Range", "tasks 0-" + (tasks.size() - 1) + "/" + tasks.size())
-                .header("Access-Control-Expose-Headers", "Content-Range")
                 .body(tasks);
     }
 
