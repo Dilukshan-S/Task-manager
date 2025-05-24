@@ -1,78 +1,99 @@
-        **Task Manager**
-
 A simple full-stack task management app featuring:
 
 Backend: Spring Boot + Spring Data JPA + H2 (file-based)
-
 Frontend: React Admin (ra-data-simple-rest)
 
-Features:
+✅ Features
 Create, Read, Update, Delete (CRUD) tasks
 
+Responsive UI using React Admin
+
+RESTful API with file-based H2 storage
+
 ⚙️ Prerequisites
-Java 17+
+Java 17 or higher
 
-Maven (bundled via ./mvnw)
+Maven (comes bundled via ./mvnw)
 
-Node.js & npm (for frontend)
+Node.js & npm (for frontend development)
 
 🚀 Getting Started
 1. Backend Setup
+Navigate to the backend directory and run:
 
-  cd backend
-  ./mvnw clean package
-  ./mvnw spring-boot:run
+cd backend
+./mvnw clean package
+./mvnw spring-boot:run
+
+Once started, you'll have access to:
 
 API: http://localhost:8080/api/tasks
 
-Web UI: http://localhost:8080/tasks
+Web UI (only after production build): http://localhost:8080
 
 H2 Console: http://localhost:8080/h2-console
 
 JDBC URL: jdbc:h2:file:./data/taskdb
+User: sa
+Password: (leave blank)
 
-User: sa, leave password blank
+2. Frontend Setup (Development Only)
+If you want to run the frontend separately with hot reloading during development:
 
-Your backend will log CORS mappings and serve both HTML and JSON endpoints.
+cd frontend
+npm install
+npm start
 
-2. Frontend Setup
+This starts the React Admin UI at:
 
-  cd frontend
-  npm install
-  npm start
+http://localhost:3000
 
-Open: http://localhost:3000
+It connects to the backend API at http://localhost:8080/api/tasks and supports pagination using the Content-Range header.
 
-The React Admin UI will fetch from http://localhost:8080/api/tasks
-
-It uses the Content-Range header for pagination
+Note: During development, both the backend and frontend must be run separately.
 
 📦 Building for Production
+Step 1: Build the Frontend
+cd frontend
+npm run build
 
-Backend
+This generates a production-ready version in the frontend/build folder.
 
+Step 2: Copy Frontend Build to Backend Static Resources
+Copy the contents of the frontend build directory into the backend’s static resources folder:
+
+cp -r frontend/build/* backend/src/main/resources/static/
+
+This allows Spring Boot to serve the frontend directly.
+
+Step 3: Build and Run Backend Only
 cd backend
 ./mvnw clean package
 java -jar target/demo-0.0.1-SNAPSHOT.jar
 
-Frontend
-cd frontend
-npm run build
+Now, the complete application (both backend and frontend) will be available at:
+
+http://localhost:8080
+
+Note: In production, only the backend needs to be started.
 
 🔄 Development Workflow
-Start backend on port 8080
+Component: Backend
+Command: ./mvnw spring-boot:run
+Port: 8080
+Auto Reload: Yes (with Spring DevTools)
 
-Start frontend on port 3000
-
-Backend auto-reloads on code changes via Spring DevTools (if enabled)
-
-Frontend hot-reloads on component edits
+Component: Frontend
+Command: npm start (inside frontend directory)
+Port: 3000
+Auto Reload: Yes (React hot reload)
 
 🤝 Contributing
-Pull requests welcome! Please:
+Pull requests are welcome!
+To contribute:
 
-Fork the repo
+Fork the repository
 
-Create a feature branch
+Create a new feature or fix branch
 
-Submit PR against main with clear description
+Submit a pull request against the main branch with a clear description
