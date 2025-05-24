@@ -50,6 +50,8 @@ public class TaskRestController {
 
         existingTask.setTitle(updatedTask.getTitle());
         existingTask.setDescription(updatedTask.getDescription());
+        existingTask.setDone(updatedTask.isDone());
+
         return ResponseEntity.ok(taskService.save(existingTask));
     }
 
