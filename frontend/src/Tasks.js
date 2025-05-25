@@ -28,7 +28,7 @@ export const TaskList = props => (
 
 export const TaskEdit = props => (
   <Edit {...props} title="Edit Task">
-    <SimpleForm>
+    <SimpleForm defaultValues={{ done: false }}>
       <TextInput source="title" />
       <TextInput source="description" multiline />
       <BooleanInput source="done" />
