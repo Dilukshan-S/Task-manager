@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 // Suppress ResizeObserver loop warnings in Chrome
 window.addEventListener('error', (event) => {
@@ -20,5 +19,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-reportWebVitals();
